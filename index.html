@@ -3,6 +3,35 @@
 
 <head>
     <title>Jacob A. Nelson</title>
+    <script type="text/javascript" src="Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="Common/initShaders.js"></script>
+    <script type="text/javascript" src="Common/MV.js"></script>
+    <script type="text/javascript" src="graphics.js"></script>
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute  vec4 vPosition;
+        attribute  vec4 vColor;
+        varying vec4 fcolor;
+        
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projectionMatrix;
+        
+        void main() 
+        {
+            gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+            fcolor = vColor;
+        } 
+    </script>
+        
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        varying vec4 fcolor;
+
+        void main()
+        {
+            gl_FragColor = fcolor;
+        }
+    </script>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <style>
         .container {
             width: 80%;
@@ -53,33 +82,27 @@
         .text-container {
             width: 80%;
             margin: auto;
-            border: 2px black solid;
             padding: 20px;
             text-align: left;
         }
 
-        .screenshot-section {
+        .page-divider {
             display: flex;
-            width: 80%;
-            margin: auto;
-            border: 2px black solid;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .screenshot-container {
-            display: flex;
+            align-items: center;
             justify-content: center;
+            margin: 20px 0;
         }
 
-        .screenshot-image-container {
-            max-width: 200px;
-            margin: 0 auto;
+        .divider-line {
+            flex-grow: 1;
+            border: none;
+            border-top: 1px solid #000;
         }
 
-        .screenshot-image-container img {
-            width: 100%;
-            height: auto;
+        .divider-text {
+            margin: 0 10px;
+            font-weight: bold;
+            color: #000;
         }
     </style>
 </head>
@@ -104,8 +127,13 @@
             <figcaption>Myself, hanging out with a seal at the Smithsonian National Zoo in Washington, D.C.</figcaption>
         </figure>
 
+        <div class="page-divider">
+            <hr class="divider-line">
+            <span class="divider-text">About Me</span>
+            <hr class="divider-line">
+        </div>
+
         <div class="text-container">
-            <h2>About Me</h2>
             <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
                 Wobble
                 wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
@@ -115,54 +143,111 @@
                 noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
         </div>
 
-        <h2>Recent Work</h2>
-        <h3>GuessWord</h3>
+        <div class="page-divider">
+            <hr class="divider-line">
+            <span class="divider-text">Graphics</span>
+            <hr class="divider-line">
+        </div>
 
-        <div class="screenshot-section">
-            <div class="screenshot-container">
-                <div class="screenshot-image-container">
-                    <img src="images/screenshot1.jpg" alt="Screenshot 1">
+        <div class="text-container">
+            <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
+                Wobble
+                wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
+                snicker-snack,
+                oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
+                wackadoodle
+                noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
+            <div style="text-align: center;">
+                <label for="perspective">Perspective:</label>
+                <select id="perspective" name="perspective">
+                    <option value="sphere">Sphere</option>
+                    <option value="line">Line</option>
+                </select>
+                <p></p>
+
+                <div id="sphere-perspective">
+                    <label for="sphere-x">X:</label>
+                    <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
+
+                    <label for="sphere-y">Y:</label>
+                    <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
+
+                    <label for="sphere-z">Z:</label>
+                    <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0" step="0.1"><br><br>
+
+                    <label for="sphere-radius">Radius:</label>
+                    <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3"
+                        step="0.1">
+
+                    <label for="animation-toggle">Rotate:</label>
+                    <label class="switch">
+                        <input id="animation-toggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
                 </div>
 
-                <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
-                    Wobble
-                    wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
-                    snicker-snack,
-                    oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
-                    wackadoodle
-                    noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.
-                    <br /> Blibber
-                    blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
-                    Wobble
-                    wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
-                    snicker-snack,
-                    oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
-                    wackadoodle
-                    noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.
-                </p>
-            </div>
-            
-            <div class="screenshot-container">
-                <div class="screenshot-image-container">
-                    <img src="images/screenshot2.jpg" alt="Screenshot 2">
-                </div>
+                <div id="line-perspective" style="display:none;">
+                    <label for="line-x1">X1:</label>
+                    <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
 
-                <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
-                    Wobble
-                    wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
-                    snicker-snack,
-                    oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
-                    wackadoodle
-                    noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.
-                    Blibber
-                    blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo. <br />
-                    Wobble
-                    wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
-                    snicker-snack,
-                    oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
-                    wackadoodle
-                    noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
+                    <label for="line-y1">Y1:</label>
+                    <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
+
+                    <label for="line-z1">Z1:</label>
+                    <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2" step="0.1"><br><br>
+
+                    <label for="line-x2">X2:</label>
+                    <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
+
+                    <label for="line-y2">Y2:</label>
+                    <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
+
+                    <label for="line-z2">Z2:</label>
+                    <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2" step="0.1"><br><br>
+
+                    <label for="line-animation-toggle">Animate</label>
+                    <label class="switch">
+                        <input id="line-animation-toggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+                <canvas id="gl-canvas" width="512" height="512">
+                    Oops ... your browser doesn't support the HTML5 canvas element
+                </canvas>
+
             </div>
+        </div>
+
+        <div class="page-divider">
+            <hr class="divider-line">
+            <span class="divider-text">GuessWord</span>
+            <hr class="divider-line">
+        </div>
+
+        <div class="text-container">
+            <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
+                Wobble
+                wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
+                snicker-snack,
+                oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
+                wackadoodle
+                noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
+        </div>
+
+        <div class="page-divider">
+            <hr class="divider-line">
+            <span class="divider-text">Other Stuff</span>
+            <hr class="divider-line">
+        </div>
+
+        <div class="text-container">
+            <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
+                Wobble
+                wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
+                snicker-snack,
+                oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
+                wackadoodle
+                noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
         </div>
     </div>
 </body>
