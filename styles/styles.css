@@ -11,7 +11,7 @@ body {
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6em;
-    font-size: 16px;
+    font-size: larger;
 }
 
 figcaption {
@@ -76,6 +76,7 @@ figcaption {
 
 .left-text-img-box img {
     max-width: 400px;
+    max-height: 600px;
     min-width: none;
     margin-left: 20px;
 }
@@ -90,6 +91,7 @@ figcaption {
 
 .right-text-img-box img {
     max-width: 400px;
+    max-height: 600px;
     min-width: none;
     margin-right: 20px;
 }
