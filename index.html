@@ -100,7 +100,7 @@
 
             <p>
                 There are a lot of things I want to do after I graduate. For instance, I want to learn more about
-                electrical engineering and circuitry, not only to make myself a better computer scienctist, but to be
+                electrical engineering and circuitry, not only to make myself a better computer scientist, but to be
                 able to build gadgets and fun stuff. For instance, I'd like to build my own guitar effect pedals. I'd
                 also like to build a retro gaming console as well, using a Raspberry Pi running game emulators. Oh, I
                 also want to get into nature photography. Particularly birds. I like birds.
@@ -130,58 +130,62 @@
         </div>
 
         <!--- GRAPHICS CONTROLS --->
-        <div>
-            <label for="perspective">Perspective:</label>
-            <select id="perspective" name="perspective">
-                <option value="sphere">Sphere</option>
-                <option value="line">Line</option>
-            </select>
-            <p></p>
+        <div id="graphics-controls">
+            <div id="controls">
+                <h5 class="label">Controls</h3>
+                <label for="perspective">Perspective:</label>
+                <select id="perspective" name="perspective">
+                    <option value="sphere">Sphere</option>
+                    <option value="line">Line</option>
+                </select>
+                <p></p>
 
-            <div id="sphere-perspective">
-                <label for="sphere-x">X:</label>
-                <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
+                <div id="sphere-perspective">
+                    <label for="sphere-x">X:</label>
+                    <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
 
-                <label for="sphere-y">Y:</label>
-                <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
+                    <label for="sphere-y">Y:</label>
+                    <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
 
-                <label for="sphere-z">Z:</label>
-                <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0" step="0.1"><br><br>
+                    <label for="sphere-z">Z:</label>
+                    <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0" step="0.1"><br><br>
 
-                <label for="sphere-radius">Radius:</label>
-                <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3" step="0.1">
+                    <label for="sphere-radius">Radius:</label>
+                    <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3"
+                        step="0.1">
 
-                <label for="animation-toggle">Rotate:</label>
-                <label class="switch">
-                    <input id="animation-toggle" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
-            </div>
+                    <label for="animation-toggle">Rotate:</label>
+                    <label class="switch">
+                        <input id="animation-toggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
 
-            <div id="line-perspective">
-                <label for="line-x1">X1:</label>
-                <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
+                <div id="line-perspective">
+                    <label for="line-x1">X1:</label>
+                    <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
 
-                <label for="line-y1">Y1:</label>
-                <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
+                    <label for="line-y1">Y1:</label>
+                    <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
 
-                <label for="line-z1">Z1:</label>
-                <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2" step="0.1"><br><br>
+                    <label for="line-z1">Z1:</label>
+                    <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2" step="0.1"><br><br>
 
-                <label for="line-x2">X2:</label>
-                <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
+                    <label for="line-x2">X2:</label>
+                    <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
 
-                <label for="line-y2">Y2:</label>
-                <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
+                    <label for="line-y2">Y2:</label>
+                    <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
 
-                <label for="line-z2">Z2:</label>
-                <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2" step="0.1"><br><br>
+                    <label for="line-z2">Z2:</label>
+                    <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2" step="0.1"><br><br>
 
-                <label for="line-animation-toggle">Animate</label>
-                <label class="switch">
-                    <input id="line-animation-toggle" type="checkbox" checked>
-                    <span class="slider round"></span>
-                </label>
+                    <label for="line-animation-toggle">Animate</label>
+                    <label class="switch">
+                        <input id="line-animation-toggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
             </div>
 
             <!--- GRAPHICS CANVAS --->
@@ -253,8 +257,6 @@
                 wackadoodle
                 noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
         </div>
-
-    </div>
 </body>
 
 </html>
