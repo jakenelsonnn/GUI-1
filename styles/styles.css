@@ -14,12 +14,12 @@ background image for the body. */
 .container {
     width: 80%;
     margin: auto;
-    background-color: #fff;
+    background-color: #b6d3ff;
     border: 3px #3335ab solid;
 }
 
 body {
-    background-color: #7a97f5;
+    background-color: #8ea8ff;
     background-image: url('../images/background.jpg');
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
@@ -48,7 +48,7 @@ h2 {
 /* Contains links that bring user to different sections of the page. */
 .navbar {
     text-align: center;
-    background-color: #b3e2fc;
+    background-color: #08a0f1;
 }
 
 /* Navbar is styled to all links within it are horizontal and centered. */
@@ -66,7 +66,7 @@ h2 {
 
 .navbar a {
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
 }
 
 /* This is the container for the icons for links at the bottom of the page.
@@ -74,7 +74,7 @@ Icons are centered and evenly spaced apart. */
 .icon-container {
     display: flex;
     justify-content: center;
-    background-color: #b3e2fc;
+    background-color: #08a0f1;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -123,6 +123,9 @@ The panel and the canvas are positioned next to each other neatly. */
     width: 80%;
     padding: 20px;
     border: 2px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     position: relative;
 }
 
@@ -130,6 +133,9 @@ The panel and the canvas are positioned next to each other neatly. */
 grouped together for page organization. */
 #controls {
     border: 1px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     margin: auto;
     padding: 10px;
     position: relative;
@@ -138,6 +144,9 @@ grouped together for page organization. */
 /* The canvas sits next to the controls panel and the size adjusts to the size of the page. */
 canvas {
     border: 1px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     margin: auto;
     width: 30%;
     height: auto;
@@ -192,6 +201,6 @@ the label intersects a line (in this case, the border of the controls panel). */
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background-color: #b6d3ff;
     padding: 0 10px;
 }
