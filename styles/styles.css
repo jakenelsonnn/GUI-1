@@ -1,3 +1,16 @@
+/*
+File: styles.css
+GUI Assignment: Creating Your First Web Page
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on May 22, 2023 at 1:05 PM
+*/
+
+/* all elements in the page go inside of this 'container'. The container's width
+is set to 80%, meaning the container's width is 80% of the window's width. I think
+this provides a nice surface to layout all elements, as well as allows me to have a 
+background image for the body. */
 .container {
     width: 80%;
     margin: auto;
@@ -18,6 +31,8 @@ figcaption {
     font-size: smaller;
 }
 
+/* The main header at the top of the page with my name on it. The font size is set to 0,
+which allowed me to remove an undesired gap below the header. */
 #main-header {
     background-color: #fcba03;
     text-align: center;
@@ -30,11 +45,13 @@ h2 {
     font-size: medium;
 }
 
+/* Contains links that bring user to different sections of the page. */
 .navbar {
     text-align: center;
     background-color: #b3e2fc;
 }
 
+/* Navbar is styled to all links within it are horizontal and centered. */
 .navbar ul {
     list-style-type: none;
     padding: 0;
@@ -52,6 +69,8 @@ h2 {
     color: #000;
 }
 
+/* This is the container for the icons for links at the bottom of the page.
+Icons are centered and evenly spaced apart. */
 .icon-container {
     display: flex;
     justify-content: center;
@@ -71,6 +90,9 @@ h2 {
     text-align: left;
 }
 
+/* Used to divide sections of the page. Each page divider is a horizontal line
+stretching the width of the container, with text in the center of it. I think this
+is a neat, clean-looking way to organize my page.*/
 .page-divider {
     display: flex;
     align-items: center;
@@ -91,6 +113,8 @@ h2 {
     color: #000;
 }
 
+/* For the graphics section of the page, which consists of the canvas and a panel of controls.
+The panel and the canvas are positioned next to each other neatly. */
 #graphics-controls {
     justify-content: center;
     display: flex;
@@ -102,6 +126,8 @@ h2 {
     position: relative;
 }
 
+/* This styles the panel of controls for the canvas. The controls are given a border and neatly
+grouped together for page organization. */
 #controls {
     border: 1px solid black;
     margin: auto;
@@ -109,19 +135,24 @@ h2 {
     position: relative;
 }
 
+/* The canvas sits next to the controls panel and the size adjusts to the size of the page. */
 canvas {
     border: 1px solid black;
     margin: auto;
     width: 30%;
     height: auto;
     margin-left: 20px;
-
 }
 
+/* This styles the controls for when the 'Line Perspective' option is chosen. By default, they
+are set to be hidden (display:none) but the javascript file associated with this page changes the
+display style to visible when the user selects the corresponding option in the perspective select. */
 #line-perspective {
     display: none;
 }
 
+/* This styles a container for an image and a body of text inline with each other. The text goes 
+on the left, and the image goes on the right. */
 .left-text-img-box {
     display: flex;
     align-items: center;
@@ -137,6 +168,8 @@ canvas {
     margin-left: 20px;
 }
 
+/* This styles a container for an image and a body of text inline with each other. The text goes 
+on the right, and the image goes on the left. */
 .right-text-img-box {
     display: flex;
     align-items: center;
@@ -152,6 +185,8 @@ canvas {
     margin-right: 20px;
 }
 
+/* This styles the label for the graphics controls panel. It is similar to the page divider in that
+the label intersects a line (in this case, the border of the controls panel). */
 .label {
     position: absolute;
     top: -40px;
