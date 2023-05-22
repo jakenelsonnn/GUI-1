@@ -11,7 +11,6 @@ body {
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6em;
-    font-size: large;
 }
 
 figcaption {
@@ -22,12 +21,43 @@ figcaption {
 #main-header {
     background-color: #fcba03;
     text-align: center;
+    font-size: 0px;
+}
+
+#main-header h1,
+h2 {
+    display: inline-block;
+    font-size: medium;
+}
+
+.navbar {
+    text-align: center;
+    background-color: #b3e2fc;
+}
+
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.navbar li {
+    margin: 0 10px;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #000;
 }
 
 .icon-container {
     display: flex;
     justify-content: center;
     background-color: #b3e2fc;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .icon-container img {
@@ -85,6 +115,7 @@ canvas {
     width: 30%;
     height: auto;
     margin-left: 20px;
+
 }
 
 #line-perspective {
@@ -120,13 +151,12 @@ canvas {
     min-width: none;
     margin-right: 20px;
 }
-  
-  .label {
+
+.label {
     position: absolute;
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #fff;
     padding: 0 10px;
-  }
-  
+}

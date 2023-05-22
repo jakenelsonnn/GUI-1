@@ -44,20 +44,21 @@
 
         <!--- MAIN HEADER --->
         <section id="main-header">
-            <h1>Jacob A. Nelson</h1>
-            <h2>Computer Science Student | UMASS Lowell</h2>
+            <h1>Jacob A. Nelson | Computer Science Student | UMASS Lowell</h1>
         </section>
 
-        <!--- ICONS --->
-        <section class="icon-container">
-            <img src="images/email-icon.png" alt="Email Icon">
-            <img src="images/github-icon.png" alt="GitHub Icon">
-            <img src="images/youtube-icon.png" alt="YouTube Icon">
-        </section>
+        <!-- NAV BAR -->
+        <div class="navbar">
+            <ul>
+                <li><a href="#about-me">About Me</a></li>
+                <li><a href="#graphics">Graphics</a></li>
+                <li><a href="#guessword">GuessWord</a></li>
+                <li><a href="#other-stuff">Other Stuff</a></li>
+            </ul>
+        </div>
 
         <!--- INTRO SECTION --->
         <div class="right-text-img-box">
-
             <!--- PICTURE OF ME WITH CAPTION --->
             <figure>
                 <div class="self-image-container">
@@ -80,10 +81,11 @@
         <!--- HORIZ. DIVIDER (ABOUT ME SECTION) --->
         <div class="page-divider">
             <hr class="divider-line">
-            <span class="divider-text">About Me</span>
+            <span class="divider-text" id="about-me">About Me</span>
             <hr class="divider-line">
         </div>
 
+        <!-- ABOUT ME TEXT -->
         <div class="text-container">
             <p>
                 As senior computer science student, and I enjoy programming and working on software. I will be earning
@@ -114,78 +116,98 @@
         <!--- HORIZ. DIVIDER (GRAPHICS SECTION) --->
         <div class="page-divider">
             <hr class="divider-line">
-            <span class="divider-text">Graphics</span>
+            <span class="divider-text" id="graphics">Graphics</span>
             <hr class="divider-line">
         </div>
 
-        <!--- GRAPHICS PARAGRAPH --->
+        <!--- GRAPHICS PARAGRAPHS --->
         <div class="text-container">
-            <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
-                Wobble
-                wabble dingle dangle mumble jumble higgledy-piggledy. Flibbertigibbet wiggly waggly wuzzletwump,
-                snicker-snack,
-                oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
-                wackadoodle
-                noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
+            <p>Computer Graphics I (COMP.4270) was a class I took in the Spring semester of 2023. This was a really
+                interesting and challenging class that teaches fundamental concepts of the computer graphics pipeline
+                using a graphics library called WebGL. Below is one of the homework assignments for that course. This
+                purpose of this assignment was to program the camera controls for an object in a scene. You can use the
+                controls below to change the position and movement of the camera. You can change the camera to either
+                rotate along the edge of a sphere facing the sphere's origin, or to travel along a line given the
+                line's endpoints.</p>
+
+            <p>
+                To switch between the sphere and the line camera, use the 'Perspective" selection box. When the sphere
+                option is chosen, you can set the origin of the sphere using the X, Y, Z, numeric entries, as well as
+                the radius. When the line option is chosen, you can define the endpoints of the line using the numeric
+                entries that appear. For both options, you can toggle the animation.
+            </p>
+
+            <p>
+                Please note that in WebGL, the canvas has a 3D coordinate system ranging from -1 to 1, so setting the
+                camera to a position outside of that range will cause the object or the camera to clip out of view.
+            </p>
+
+            <p>
+                Also, just for fun, I made it so the colors of each face of the object are randomized on page load.
+            </p>
         </div>
 
         <!--- GRAPHICS CONTROLS --->
         <div id="graphics-controls">
             <div id="controls">
                 <h5 class="label">Controls</h3>
-                <label for="perspective">Perspective:</label>
-                <select id="perspective" name="perspective">
-                    <option value="sphere">Sphere</option>
-                    <option value="line">Line</option>
-                </select>
-                <p></p>
+                    <label for="perspective">Perspective:</label>
+                    <select id="perspective" name="perspective">
+                        <option value="sphere">Sphere</option>
+                        <option value="line">Line</option>
+                    </select>
+                    <p></p>
 
-                <div id="sphere-perspective">
-                    <label for="sphere-x">X:</label>
-                    <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
+                    <div id="sphere-perspective">
+                        <label for="sphere-x">X:</label>
+                        <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
 
-                    <label for="sphere-y">Y:</label>
-                    <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
+                        <label for="sphere-y">Y:</label>
+                        <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
 
-                    <label for="sphere-z">Z:</label>
-                    <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0" step="0.1"><br><br>
+                        <label for="sphere-z">Z:</label>
+                        <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0"
+                            step="0.1"><br><br>
 
-                    <label for="sphere-radius">Radius:</label>
-                    <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3"
-                        step="0.1">
+                        <label for="sphere-radius">Radius:</label>
+                        <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3"
+                            step="0.1">
 
-                    <label for="animation-toggle">Rotate:</label>
-                    <label class="switch">
-                        <input id="animation-toggle" type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+                        <label for="animation-toggle">Rotate:</label>
+                        <label class="switch">
+                            <input id="animation-toggle" type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
 
-                <div id="line-perspective">
-                    <label for="line-x1">X1:</label>
-                    <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
+                    <!--- CONTROLS FOR LINE PERSPECTIVE - HIDDEN BY DEFAULT --->
+                    <div id="line-perspective">
+                        <label for="line-x1">X1:</label>
+                        <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
 
-                    <label for="line-y1">Y1:</label>
-                    <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
+                        <label for="line-y1">Y1:</label>
+                        <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
 
-                    <label for="line-z1">Z1:</label>
-                    <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2" step="0.1"><br><br>
+                        <label for="line-z1">Z1:</label>
+                        <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2"
+                            step="0.1"><br><br>
 
-                    <label for="line-x2">X2:</label>
-                    <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
+                        <label for="line-x2">X2:</label>
+                        <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
 
-                    <label for="line-y2">Y2:</label>
-                    <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
+                        <label for="line-y2">Y2:</label>
+                        <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
 
-                    <label for="line-z2">Z2:</label>
-                    <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2" step="0.1"><br><br>
+                        <label for="line-z2">Z2:</label>
+                        <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2"
+                            step="0.1"><br><br>
 
-                    <label for="line-animation-toggle">Animate</label>
-                    <label class="switch">
-                        <input id="line-animation-toggle" type="checkbox" checked>
-                        <span class="slider round"></span>
-                    </label>
-                </div>
+                        <label for="line-animation-toggle">Animate</label>
+                        <label class="switch">
+                            <input id="line-animation-toggle" type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
             </div>
 
             <!--- GRAPHICS CANVAS --->
@@ -198,10 +220,11 @@
         <!--- HORIZ. PAGE DIVIDER (GUESSWORD) --->
         <div class="page-divider">
             <hr class="divider-line">
-            <span class="divider-text">GuessWord</span>
+            <span class="divider-text" id="guessword">GuessWord</span>
             <hr class="divider-line">
         </div>
 
+        <!-- GUESSWORD INTRO PARAGRAPH -->
         <div class="text-container">
             <p>Blibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy floo.
                 Wobble
@@ -210,6 +233,8 @@
                 oodle noodle doodle. Hodgepodge mishmash mishigas, bippity boppity boo. Gobbledygook zoodle-noodle,
                 wackadoodle
                 noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
+
+            <!-- TEXT (LEFT) SCREENSHOT (RIGHT) -->
             <div class="left-text-img-box">
                 <div class="text">
                     <p>TBlibber blop flibber jabber shibber shabber gibberish! Zippity zoppity zibber zabber flibberdy
@@ -225,6 +250,8 @@
                 </div>
                 <img src="images/screenshot1.jpg" alt="Image">
             </div>
+
+            <!-- TEXT (RIGHT) SCREENSHOT (LEFT) -->
             <div class="right-text-img-box">
                 <img src="images/screenshot2.jpg" alt="Image">
                 <div class="text">
@@ -242,9 +269,10 @@
             </div>
         </div>
 
+        <!--- HORIZ. DIVIDER ('OTHER STUFF' SECTION) --->
         <div class="page-divider">
             <hr class="divider-line">
-            <span class="divider-text">Other Stuff</span>
+            <span class="divider-text" id="other-stuff">Other Stuff</span>
             <hr class="divider-line">
         </div>
 
@@ -257,6 +285,15 @@
                 wackadoodle
                 noodledoodle, brouhaha hullabaloo! Bazinga zonk blabberknock, fiddle-faddle, kerfuffle, fubar.</p>
         </div>
+
+        <!--- SOCIAL LINKS/ICONS --->
+        <section class="icon-container">
+            <a href="mailto:jacob_nelson@student.uml.edu"><img src="images/email-icon.png" alt="Email Icon"></a>
+            <a href="http://github.com/jakenelsonnn"><img src="images/github-icon.png" alt="GitHub Icon"></a>
+            <a href="https://www.youtube.com/channel/UCjzNYywphRN2f2bqCHsjs7A"><img src="images/youtube-icon.png"
+                    alt="YouTube Icon"></a>
+        </section>
+    </div>
 </body>
 
 </html>
