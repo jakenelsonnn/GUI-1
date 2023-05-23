@@ -174,7 +174,6 @@ on the left, and the image goes on the right. */
 .left-text-img-box img {
     max-width: 400px;
     max-height: 600px;
-    min-width: none;
     margin-left: 20px;
 }
 
@@ -191,7 +190,6 @@ on the right, and the image goes on the left. */
 .right-text-img-box img {
     max-width: 400px;
     max-height: 600px;
-    min-width: none;
     margin-right: 20px;
 }
 
