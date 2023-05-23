@@ -8,15 +8,15 @@ Last modified by JN on May 22, 2023 at 1:05 PM
 -->
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Jacob A. Nelson</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css">
-    <script type="text/javascript" src="Common/webgl-utils.js"></script>
-    <script type="text/javascript" src="Common/initShaders.js"></script>
-    <script type="text/javascript" src="Common/MV.js"></script>
-    <script type="text/javascript" src="graphics.js"></script>
+    <script src="Common/webgl-utils.js"></script>
+    <script src="Common/initShaders.js"></script>
+    <script src="Common/MV.js"></script>
+    <script src="graphics.js"></script>
     <script id="vertex-shader" type="x-shader/x-vertex">
         attribute  vec4 vPosition;
         attribute  vec4 vColor;
@@ -41,17 +41,16 @@ Last modified by JN on May 22, 2023 at 1:05 PM
             gl_FragColor = fcolor;
         }
     </script>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 </head>
 
-<!--- BODY --->
+<!-- BODY -->
 
 <body>
 
-    <!--- CONTAINER --->
+    <!-- CONTAINER -->
     <div class="container">
 
-        <!--- MAIN HEADER --->
+        <!-- MAIN HEADER -->
         <section id="main-header">
             <h1>Jacob A. Nelson | Computer Science Student | UMASS Lowell</h1>
         </section>
@@ -66,9 +65,9 @@ Last modified by JN on May 22, 2023 at 1:05 PM
             </ul>
         </div>
 
-        <!--- INTRO SECTION --->
+        <!-- INTRO SECTION -->
         <div class="right-text-img-box">
-            <!--- PICTURE OF ME WITH CAPTION --->
+            <!-- PICTURE OF ME WITH CAPTION -->
             <figure>
                 <div class="self-image-container">
                     <img src="images/image.jpg" alt="Image">
@@ -77,7 +76,7 @@ Last modified by JN on May 22, 2023 at 1:05 PM
                 </figcaption>
             </figure>
 
-            <!--- INTRO SECTION TEXT --->
+            <!-- INTRO SECTION TEXT -->
             <div class="text-container">
                 <p>Hi, I'm Jacob Nelson, and this webpage is my first assignment for Graphical User Interface
                     Programming (COMP.4610) at University of Massachusetts Lowell. This webpage functions as a platform
@@ -87,7 +86,7 @@ Last modified by JN on May 22, 2023 at 1:05 PM
             </div>
         </div>
 
-        <!--- HORIZ. DIVIDER (ABOUT ME SECTION) --->
+        <!-- HORIZ. DIVIDER (ABOUT ME SECTION) -->
         <div class="page-divider">
             <hr class="divider-line">
             <span class="divider-text" id="about-me">About Me</span>
@@ -122,14 +121,14 @@ Last modified by JN on May 22, 2023 at 1:05 PM
             </p>
         </div>
 
-        <!--- HORIZ. DIVIDER (GRAPHICS SECTION) --->
+        <!-- HORIZ. DIVIDER (GRAPHICS SECTION) -->
         <div class="page-divider">
             <hr class="divider-line">
             <span class="divider-text" id="graphics">Graphics</span>
             <hr class="divider-line">
         </div>
 
-        <!--- GRAPHICS PARAGRAPHS --->
+        <!-- GRAPHICS PARAGRAPHS -->
         <div class="text-container">
             <p>Computer Graphics I (COMP.4270) was a class I took in the Spring semester of 2023. This was a really
                 interesting and challenging class that teaches fundamental concepts of the computer graphics pipeline
@@ -156,77 +155,74 @@ Last modified by JN on May 22, 2023 at 1:05 PM
             </p>
         </div>
 
-        <!--- GRAPHICS CONTROLS --->
+        <!-- GRAPHICS CONTROLS -->
         <div id="graphics-controls">
             <div id="controls">
-                <h5 class="label">Controls</h3>
-                    <label for="perspective">Perspective:</label>
-                    <select id="perspective" name="perspective">
-                        <option value="sphere">Sphere</option>
-                        <option value="line">Line</option>
-                    </select>
-                    <p></p>
+                <h5 class="label">Controls</h5>
+                <label for="perspective">Perspective:</label>
+                <select id="perspective" name="perspective">
+                    <option value="sphere">Sphere</option>
+                    <option value="line">Line</option>
+                </select>
+                <p></p>
 
-                    <div id="sphere-perspective">
-                        <label for="sphere-x">X:</label>
-                        <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
+                <div id="sphere-perspective">
+                    <label for="sphere-x">X:</label>
+                    <input type="number" id="sphere-x" name="sphere-x" min="-10" max="10" value="0" step="0.1">
 
-                        <label for="sphere-y">Y:</label>
-                        <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
+                    <label for="sphere-y">Y:</label>
+                    <input type="number" id="sphere-y" name="sphere-y" min="-10" max="10" value="0" step="0.1">
 
-                        <label for="sphere-z">Z:</label>
-                        <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0"
-                            step="0.1"><br><br>
+                    <label for="sphere-z">Z:</label>
+                    <input type="number" id="sphere-z" name="sphere-z" min="-10" max="10" value="0" step="0.1"><br><br>
 
-                        <label for="sphere-radius">Radius:</label>
-                        <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3"
-                            step="0.1">
+                    <label for="sphere-radius">Radius:</label>
+                    <input type="number" id="sphere-radius" name="sphere-radius" min="-0.1" max="10" value="3"
+                        step="0.1">
 
-                        <label for="animation-toggle">Rotate:</label>
-                        <label class="switch">
-                            <input id="animation-toggle" type="checkbox" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                    <label for="animation-toggle">Rotate:</label>
+                    <label class="switch">
+                        <input id="animation-toggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
 
-                    <!--- CONTROLS FOR LINE PERSPECTIVE - HIDDEN BY DEFAULT --->
-                    <div id="line-perspective">
-                        <label for="line-x1">X1:</label>
-                        <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
+                <!-- CONTROLS FOR LINE PERSPECTIVE - HIDDEN BY DEFAULT -->
+                <div id="line-perspective">
+                    <label for="line-x1">X1:</label>
+                    <input type="number" id="line-x1" name="line-x1" min="-100" max="100" value="-2" step="0.1">
 
-                        <label for="line-y1">Y1:</label>
-                        <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
+                    <label for="line-y1">Y1:</label>
+                    <input type="number" id="line-y1" name="line-y1" min="-100" max="100" value="-2" step="0.1">
 
-                        <label for="line-z1">Z1:</label>
-                        <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2"
-                            step="0.1"><br><br>
+                    <label for="line-z1">Z1:</label>
+                    <input type="number" id="line-z1" name="line-z1" min="-100" max="100" value="-2" step="0.1"><br><br>
 
-                        <label for="line-x2">X2:</label>
-                        <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
+                    <label for="line-x2">X2:</label>
+                    <input type="number" id="line-x2" name="line-x2" min="-100" max="100" value="2" step="0.1">
 
-                        <label for="line-y2">Y2:</label>
-                        <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
+                    <label for="line-y2">Y2:</label>
+                    <input type="number" id="line-y2" name="line-y2" min="-100" max="100" value="2" step="0.1">
 
-                        <label for="line-z2">Z2:</label>
-                        <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2"
-                            step="0.1"><br><br>
+                    <label for="line-z2">Z2:</label>
+                    <input type="number" id="line-z2" name="line-z2" min="-100" max="100" value="2" step="0.1"><br><br>
 
-                        <label for="line-animation-toggle">Animate</label>
-                        <label class="switch">
-                            <input id="line-animation-toggle" type="checkbox" checked>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
+                    <label for="line-animation-toggle">Animate</label>
+                    <label class="switch">
+                        <input id="line-animation-toggle" type="checkbox" checked>
+                        <span class="slider round"></span>
+                    </label>
+                </div>
             </div>
 
-            <!--- GRAPHICS CANVAS --->
+            <!-- GRAPHICS CANVAS -->
             <canvas id="gl-canvas" width="512" height="512">
                 Oops ... your browser doesn't support the HTML5 canvas element :/
             </canvas>
 
         </div>
 
-        <!--- HORIZ. PAGE DIVIDER (GUESSWORD) --->
+        <!-- HORIZ. PAGE DIVIDER (GUESSWORD) -->
         <div class="page-divider">
             <hr class="divider-line">
             <span class="divider-text" id="guessword">GuessWord</span>
@@ -277,7 +273,7 @@ Last modified by JN on May 22, 2023 at 1:05 PM
                 installation) file <a href="https://github.com/jacoba-nelson/GuessWord">here</a>.</p>
         </div>
 
-        <!--- HORIZ. DIVIDER ('OTHER STUFF' SECTION) --->
+        <!-- HORIZ. DIVIDER ('OTHER STUFF' SECTION) -->
         <div class="page-divider">
             <hr class="divider-line">
             <span class="divider-text" id="other-stuff">Other Stuff</span>
@@ -337,13 +333,13 @@ Last modified by JN on May 22, 2023 at 1:05 PM
             </table>
         </div>
 
-        <!--- SOCIAL LINKS/ICONS --->
-        <section class="icon-container">
+        <!-- SOCIAL LINKS/ICONS -->
+        <div class="icon-container">
             <a href="mailto:jacob_nelson@student.uml.edu"><img src="images/email-icon.png" alt="Email Icon"></a>
             <a href="http://github.com/jakenelsonnn"><img src="images/github-icon.png" alt="GitHub Icon"></a>
             <a href="https://www.youtube.com/channel/UCjzNYywphRN2f2bqCHsjs7A"><img src="images/youtube-icon.png"
                     alt="YouTube Icon"></a>
-        </section>
+        </div>
     </div>
 </body>
 
