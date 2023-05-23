@@ -120,6 +120,7 @@ The panel and the canvas are positioned next to each other neatly. */
     display: flex;
     flex: 2;
     margin: auto;
+    background-color: #68acff;
     width: 80%;
     padding: 20px;
     border: 2px solid black;
@@ -201,6 +202,72 @@ the label intersects a line (in this case, the border of the controls panel). */
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #b6d3ff;
+    background-color: #68acff;
     padding: 0 10px;
 }
+
+/* This styles the "features" showcase of the GuessWord secttion. Each feature will be a container with a
+screenshot and a caption below it, in a nice little box with a light shadow. */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .feature {
+    flex-basis: calc(20% - 20px);
+    margin: 20px;
+    padding: 20px;
+    background-color: #68acff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .feature img {
+    max-width: 100%;
+    border-radius: 4px;
+  }
+  
+  .feature h3 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1vw;
+  }
+  
+  .feature p {
+    flex-grow: 1;
+    font-size: 0.8vw;
+  }
+
+  .link-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .link-table th,
+  .link-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .link-table th {
+    background-color: #68acff;
+  }
+  
+  .link-table tbody tr:hover {
+    background-color: #68acff;
+  }
+  
+  .link-table a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .link-table a:hover {
+    text-decoration: underline;
+  }
+  
+  
