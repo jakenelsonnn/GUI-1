@@ -1,0 +1,138 @@
+/*
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+
+File: pacific.css
+GUI Assignment: HW2: Styling a Site with External CSS
+Description: This assignment involved being given plain HTML and using only CSS to style it
+according to a specific requirement. The associated HTML file, index.html, has not been modified.
+
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on June 5, 2023 at 11:25 AM
+*/
+
+/*Contains all elements on the page, and provides background to the page.*/
+body {
+	color: #666666;
+	background-image: url('ptrbackground.jpg');
+	background-color: #00569f;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Located on top, has a background that which the left 75% is a solid color and the right 25% is
+an image, sunset.jpg.*/
+header {
+	grid-area: header;
+	background-color: #080935;
+	background-image: url('sunset.jpg');
+	background-repeat: no-repeat;
+  	background-position: right;
+  	background-size: 25% auto;
+	color: #FFFFFF;
+	width: 100%;
+}
+
+/*The main container of all elements. Width is 80% and arranges child elements in a grid, defined
+by grid-template-areas.*/
+#wrapper {
+	width: 80%;
+	min-width: 600px;
+	margin: auto;
+	background-color: white;
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"header header"
+		"sidebar main"
+		"sidebar footer";
+}
+
+/*Used to emphasize the name of the resort.*/
+.resort {
+	color: #3399CC;
+	font-weight: bold;
+}
+
+/*Contains the subheading, image, list, and contact elements.*/
+#content {
+	padding: 10px 20px 20px 20px;
+	background-color: #ffffff;
+}
+
+/*The image within the content section. Float it left, and the remaining stuff in the content
+div will flow to the right.*/
+#content img {
+	float: left;
+	padding-right: 30px;
+}
+
+/*Adjust the indentation style and the bullet points for the activities list.*/
+#content ul {
+	list-style-position: inside;
+	list-style-image: url(marker.gif);
+}
+
+/*Sidebar bound to the left side due to its grid placement.*/
+nav {
+	background-color: #80d1f9;
+	grid-area: sidebar;
+	width: 200px;
+	font-weight: bold;
+}
+
+/*Style the nav bar list to not have bullets and adjust font size.*/
+nav ul {
+	font-size: 1.2em;
+	list-style-type: none;
+}
+
+/*Style the links in the nav bar.*/
+nav a {
+	text-decoration: none;
+	color: #013053;
+}
+
+/*Change the color of the visited links in the nav bar.*/
+nav a:visited {
+	color: #344873;
+}
+
+/*Links hovered over in the nav bar are colored white.*/
+nav a:hover {
+	color: #FFFFFF;
+}
+
+/*Style the main heading of the page.*/
+h1 {
+	margin-bottom: 0;
+	padding: 0px 10px 10px 10px;
+}
+
+/*Style the heading within 'content' section.*/
+h2 {
+	color: #3399CC;
+}
+
+h1,
+h2 {
+	font-family: Georgia, "Times New Roman", serif;
+}
+
+/*Slightly shrink font size for contact*/
+#contact {
+	font-size: 90%;
+}
+
+dt {
+	color: #000033;
+}
+
+/*Style the footer of the page, this section is bound to the bottom due to the grid placement.*/
+footer {
+	font-family: Georgia, "Times New Roman", serif;
+	width: 100%;
+	grid-area: footer;
+	padding: 20px 0px 20px 20px;
+	font-style: italic;
+}
