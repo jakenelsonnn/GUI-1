@@ -1,0 +1,50 @@
+/*
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+
+File: styles.css
+GUI Assignment: HW3: Creating an Interactive Dynamic Table
+Description: This is the style sheet for HW3. For more information about HW3, please
+look at HW3.html.
+
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on June 7, 2023 at 11:18 AM
+*/
+
+table {
+    border-collapse: collapse;
+}
+
+#tableContainer {
+    margin-top: 50px;
+    overflow: auto;
+    max-height: 600px;
+}
+
+#alert {
+    display: none;
+}
+
+th,
+td {
+    border: 1px solid black;
+    padding: 8px;
+}
+
+th {
+    background-color: lightblue;
+}
+
+td:first-child {
+    background-color: lightblue;
+}
+
+tr:nth-child(even) td:nth-child(even),
+tr:nth-child(odd) td:nth-child(odd) {
+    background-color: white;
+}
+
+tr:nth-child(even) td:nth-child(odd),
+tr:nth-child(odd) td:nth-child(even) {
+    background-color: cornflowerblue;
+}

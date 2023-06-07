@@ -1,0 +1,68 @@
+<!--
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+
+File: index.html
+GUI Assignment: HW3: Creating an Interactive Dynamic Table
+Description: This assignment involved setting up an interactive multiplication table
+in HTML/CSS, then using Javascript to program the behavior of the program (i.e, calculate
+and display the values of the products of the first row and first column of the table.)
+
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on June 7, 2023 at 11:18 AM
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Multiplication Table</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Table Generator</h1>
+
+        <div class="row">
+            <form class="col-md-6">
+                <div class="mb-3">
+                    <label for="width-start" class="form-label">Width Start:</label>
+                    <input type="number" class="form-control" id="width-start" value="1">
+                </div>
+                <div class="mb-3">
+                    <label for="width-end" class="form-label">Width End:</label>
+                    <input type="number" class="form-control" id="width-end" value="1">
+                </div>
+            </form>
+
+            <form class="col-md-6">
+                <div class="mb-3">
+                    <label for="height-start" class="form-label">Height Start:</label>
+                    <input type="number" class="form-control" id="height-start" value="1">
+                </div>
+                <div class="mb-3">
+                    <label for="height-end" class="form-label">Height End:</label>
+                    <input type="number" class="form-control" id="height-end" value="1">
+                </div>
+            </form>
+        </div>
+
+        <div class="alert alert-danger" id="alert">Hello</div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" onclick="generateTable()">Generate</button>
+            </div>
+        </div>
+
+        <div id="tableContainer"></div>
+
+    </div>
+
+    <script type="text/javascript" src="js/hw3.js"></script>
+</body>
+
+</html>
