@@ -8,7 +8,7 @@ look at HW3.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 7, 2023 at 11:18 AM
+Last modified by JN on June 8, 2023 at 10:34 AM
 */
 
 // programatically generate the mult. table
@@ -84,10 +84,10 @@ function generateTable() {
             cell.textContent = i * j;
             row.appendChild(cell);
         }
-
         tableBody.appendChild(row);
     }
 
+    // finally, assemble the table
     table.appendChild(tableBody);
     tableContainer.appendChild(table);
 }

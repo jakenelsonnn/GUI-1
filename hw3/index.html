@@ -7,9 +7,15 @@ Description: This assignment involved setting up an interactive multiplication t
 in HTML/CSS, then using Javascript to program the behavior of the program (i.e, calculate
 and display the values of the products of the first row and first column of the table.)
 
+This page contains two forms which the user enters the range of the multiplication table.
+When the user presses "Generate" a multiplication table based on the given ranges is
+created and displayed on the page.
+
+This page was made with Bootstrap CSS.
+
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 7, 2023 at 11:18 AM
+Last modified by JN on June 8, 2023 at 10:34 AM
 -->
 
 <!DOCTYPE html>
@@ -19,13 +25,17 @@ Last modified by JN on June 7, 2023 at 11:18 AM
     <meta charset="utf-8">
     <title>Multiplication Table</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Additional stylesheet for the table -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
+    <!-- contains all elements -->
     <div class="container">
         <h1>Table Generator</h1>
 
+        <!-- Width Range Entry -->
         <div class="row">
             <form class="col-md-6">
                 <div class="mb-3">
@@ -38,6 +48,7 @@ Last modified by JN on June 7, 2023 at 11:18 AM
                 </div>
             </form>
 
+            <!-- Height Range Entry -->
             <form class="col-md-6">
                 <div class="mb-3">
                     <label for="height-start" class="form-label">Height Start:</label>
@@ -50,18 +61,22 @@ Last modified by JN on June 7, 2023 at 11:18 AM
             </form>
         </div>
 
+        <!-- Alert for input validation. Hidden by default -->
         <div class="alert alert-danger" id="alert"></div>
 
+        <!-- 'Generate' button -->
         <div class="row">
             <div class="col-md-12">
                 <button class="btn btn-primary" onclick="generateTable()">Generate</button>
             </div>
         </div>
 
+        <!-- The Multiplcation Table (populated by JavaScript) -->
         <div id="tableContainer"></div>
 
     </div>
 
+    <!-- JS -->
     <script type="text/javascript" src="js/hw3.js"></script>
 </body>
 
