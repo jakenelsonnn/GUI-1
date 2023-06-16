@@ -4,11 +4,11 @@ Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
 File: hw3.js
 GUI Assignment: HW3: Creating an Interactive Dynamic Table
 Description: This is the javascript for HW3. For more information about HW3, please
-look at HW3.html.
+look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 8, 2023 at 10:34 AM
+Last modified by JN on June 16, 2023 at 9:40 AM
 */
 
 // programatically generate the mult. table
