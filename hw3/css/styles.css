@@ -8,18 +8,17 @@ look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 16, 2023 at 9:40 AM
+Last modified by JN on June 16, 2023 at 10:19 AM
 */
 
-table {
-    border-collapse: collapse;
-}
 
-/* mult. table is scrollable when large */
+/* table container */
 #tableContainer {
     margin-top: 50px;
+    margin-bottom: 50px;
     overflow: auto;
-    max-height: 600px;
+    max-height: 500px;
+    position: relative;
 }
 
 /* alert message is hidden by default */
@@ -30,18 +29,24 @@ table {
 /* table cells */
 th,
 td {
-    border: 1px solid black;
     padding: 8px;
 }
 
 /* 1st row accent */
-th {
+tr:first-child th {
     background-color: lightblue;
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 /* 1st column accent */
+th:first-child,
 td:first-child {
     background-color: lightblue;
+    position: sticky;
+    left: 0;
+    z-index: 1;
 }
 
 /* 'checkerboard' pattern for table */
@@ -53,4 +58,10 @@ tr:nth-child(odd) td:nth-child(odd) {
 tr:nth-child(even) td:nth-child(odd),
 tr:nth-child(odd) td:nth-child(even) {
     background-color: cornflowerblue;
+}
+
+/* fix the leftmost column */
+td:first-child {
+    position: sticky;
+    left: 0;
 }
