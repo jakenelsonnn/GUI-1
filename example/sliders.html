@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jQuery UI Slider Showcase</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <style>
+    #slider {
+      width: 300px;
+      margin-bottom: 20px;
+    }
+    #slider-value {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    $(document).ready(function() {
+      // Basic Slider
+      $("#slider").slider({
+        slide: function(event, ui) {
+          $("#slider-value").text(ui.value);
+        }
+      });
+      $("#slider-value").text($("#slider").slider("value"));
+    });
+  </script>
+</head>
+<body>
+  <h1>jQuery UI Slider Showcase</h1>
+
+  <h2>Basic Slider</h2>
+  <div id="slider"></div>
+  <p>Selected Value: <span id="slider-value"></span></p>
+
+  <!-- Rest of the code remains the same -->
+
+</body>
+</html>

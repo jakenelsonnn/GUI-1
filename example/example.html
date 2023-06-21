@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>jQuery Validation Plugin Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+</head>
+
+<body>
+    <form id="myForm">
+        <label for="start">Start:</label>
+        <input type="number" id="start" name="start" required>
+        <br>
+        <label for="end">End:</label>
+        <input type="number" id="end" name="end" required>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        $(document).ready(function () {
+            // Add validation rules
+            $("#myForm").validate({
+                rules: {
+                    start: {
+                        required: true,
+                        number: true,
+                    },
+                    end: {
+                        required: true,
+                        number: true,
+                    }
+                },
+                messages: {
+                    start: {
+                        required: "Please enter a start value.",
+                        number: "Please enter a valid number.",
+                    },
+                    end: {
+                        required: "Please enter an end value.",
+                        number: "Please enter a valid number.",
+                    }
+                },
+                submitHandler: function (form) {
+                    // Form submission logic
+                    alert("Form submitted successfully!");
+                    return false; // Prevent form submission
+                }
+            });
+
+            // Custom validation method for range check
+            $.validator.addMethod("rangeCheck", function (value, element) {
+                var start = parseFloat($("#start").val());
+                var end = parseFloat($("#end").val());
+                var range = end - start;
+                return range <= 100;
+            }, "The range must be less than or equal to 100.");
+
+            // Add custom rule for range check
+            $("#end").rules("add", {
+                rangeCheck: true
+            });
+
+            // Custom validation method for lessthan
+            $.validator.addMethod("lessThan", function (value, element) {
+                var start = parseFloat($("#start").val());
+                var end = parseFloat($("#end").val());
+                return start < end;
+            }, "The Start value must be less than the End value!");
+
+            // Add custom rule for lessthan
+            $("#start").rules("add", {
+                lessThan: true
+            });
+
+            // Custom validation method for greaterthan
+            $.validator.addMethod("greaterThan", function (value, element) {
+                var start = parseFloat($("#start").val());
+                var end = parseFloat($("#end").val());
+                return start < end;
+            }, "The End value must be greater than the Start value!");
+
+            // Add custom rule for greaterthan
+            $("#end").rules("add", {
+                greaterThan: true
+            });
+        });
+    </script>
+</body>
+
+</html>
