@@ -2,13 +2,13 @@
 Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
 
 File: styles.css
-GUI Assignment: HW3: Creating an Interactive Dynamic Table
-Description: This is the style sheet for HW3. For more information about HW3, please
+GUI Assignment: HW4: Using the jQuery Plugin/UI with Your Dynamic Table
+Description: This is the style sheet for HW4. For more information about HW4, please
 look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 16, 2023 at 10:19 AM
+Last modified by JN on June 21, 2023 at 5:55 PM
 */
 
 
@@ -64,4 +64,9 @@ tr:nth-child(odd) td:nth-child(even) {
 td:first-child {
     position: sticky;
     left: 0;
+}
+
+.slider {
+    width: 300px;
+    margin-bottom: 20px;
 }

@@ -1,17 +1,69 @@
 /*
 Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
 
-File: hw3.js
-GUI Assignment: HW3: Creating an Interactive Dynamic Table
-Description: This is the javascript for HW3. For more information about HW3, please
+File: hw4.js
+GUI Assignment: HW4: Using the jQuery Plugin/UI with Your Dynamic Table
+Description: This is the javascript for HW4. For more information about HW4, please
 look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 16, 2023 at 9:40 AM
+Last modified by JN on June 21, 2023 at 5:55 PM
 */
 
 $(document).ready(function () {
+
+    $(document).ready(function () {
+        // Initialize jQuery UI sliders
+        $("#widthstartslider").slider({
+            range: "min",
+            value: "1",
+            min: -100,
+            max: 100,
+            slide: function (event, ui) {
+                $("#widthstartslider").val(ui.value);
+                $("#widthstart").val(ui.value);
+                generateTable();
+            }
+        });
+
+        $("#widthendslider").slider({
+            range: "min",
+            value: "10",
+            min: -100,
+            max: 100,
+            slide: function (event, ui) {
+                $("#widthendslider").val(ui.value);
+                $("#widthend").val(ui.value);
+                generateTable();
+            }
+        });
+
+        $("#heightstartslider").slider({
+            range: "min",
+            value: "1",
+            min: -100,
+            max: 100,
+            slide: function (event, ui) {
+                $("#heightstartslider").val(ui.value);
+                $("#heightstart").val(ui.value);
+                generateTable();
+            }
+        });
+
+        $("#heightendslider").slider({
+            range: "min",
+            value: "10",
+            min: -100,
+            max: 100,
+            slide: function (event, ui) {
+                $("#heightendslider").val(ui.value);
+                $("#heightend").val(ui.value);
+                generateTable();
+            }
+        });
+    });
+
     // Add validation rules to width form
     $("#width-form").validate({
         rules: {
@@ -30,7 +82,7 @@ $(document).ready(function () {
                 number: "Please enter a valid number."
             },
             widthend: {
-                required: "Please enter an width end value.",
+                required: "Please enter a width end value.",
                 number: "Please enter a valid number."
             }
         },
@@ -102,7 +154,7 @@ $(document).ready(function () {
                 number: "Please enter a valid number."
             },
             heightend: {
-                required: "Please enter an height end value.",
+                required: "Please enter a height end value.",
                 number: "Please enter a valid number."
             }
         },

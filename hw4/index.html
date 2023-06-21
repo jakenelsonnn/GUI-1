@@ -26,8 +26,10 @@ Last modified by JN on June 16, 2023 at 9:40 AM
     <meta charset="utf-8">
     <title>Multiplication Table</title>
     <!-- jQuery -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -39,7 +41,7 @@ Last modified by JN on June 16, 2023 at 9:40 AM
 <body>
     <!-- contains all elements -->
     <div class="container">
-        <h1>Multiplcation Table Generator</h1>
+        <h1>Multiplication Table Generator</h1>
 
         <p class="lead">Use the inputs below to define the multiplcation table you wish to see. Make sure that the end
             value is larger than the start value for both width and height. Furthermore, ensure that the range between
@@ -53,10 +55,12 @@ Last modified by JN on June 16, 2023 at 9:40 AM
                     <label for="widthstart" class="form-label">Width Start:</label>
                     <input type="number" class="form-control" id="widthstart" value="1" required>
                 </div>
+                <div id="widthstartslider" class="slider"></div>
                 <div class="mb-3">
                     <label for="widthend" class="form-label">Width End:</label>
                     <input type="number" class="form-control" id="widthend" value="10" required>
                 </div>
+                <div id="widthendslider" class="slider"></div>
             </form>
 
             <!-- Height Range Entry -->
@@ -65,10 +69,12 @@ Last modified by JN on June 16, 2023 at 9:40 AM
                     <label for="heightstart" class="form-label">Height Start:</label>
                     <input type="number" class="form-control" id="heightstart" value="1" required>
                 </div>
+                <div id="heightstartslider" class="slider"></div>
                 <div class="mb-3">
                     <label for="heightend" class="form-label">Height End:</label>
                     <input type="number" class="form-control" id="heightend" value="10" required>
                 </div>
+                <div id="heightendslider" class="slider"></div>
             </form>
         </div>
 
