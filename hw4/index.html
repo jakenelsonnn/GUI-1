@@ -1,0 +1,94 @@
+<!--
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+
+File: index.html
+GUI Assignment: HW4: Using the jQuery Plugin/UI with Your Dynamic Table
+Description: This assignment involved extending the previous assignment by implementing jQuery.
+
+This page contains two forms which the user enters the range of the multiplication table.
+When the user presses "Generate" a multiplication table based on the given ranges is
+created and displayed on the page.
+
+If the user enters invalid numbers into the forms, jQuery will handle and display an
+appropriate error message.
+
+This page was made with Bootstrap CSS.
+
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on June 16, 2023 at 9:40 AM
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Multiplication Table</title>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+    <!-- Additional stylesheet for the table -->
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <!-- contains all elements -->
+    <div class="container">
+        <h1>Multiplcation Table Generator</h1>
+
+        <p class="lead">Use the inputs below to define the multiplcation table you wish to see. Make sure that the end
+            value is larger than the start value for both width and height. Furthermore, ensure that the range between
+            your end and start value is less than 100, or the table will not be generated. When you have entered your
+            inputs, press <b>Generate</b> to create the table.</p>
+
+        <!-- Width Range Entry -->
+        <div class="row">
+            <form class="col-md-6" id="width-form">
+                <div class="mb-3">
+                    <label for="widthstart" class="form-label">Width Start:</label>
+                    <input type="number" class="form-control" id="widthstart" value="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="widthend" class="form-label">Width End:</label>
+                    <input type="number" class="form-control" id="widthend" value="10" required>
+                </div>
+            </form>
+
+            <!-- Height Range Entry -->
+            <form class="col-md-6" id="height-form">
+                <div class="mb-3">
+                    <label for="heightstart" class="form-label">Height Start:</label>
+                    <input type="number" class="form-control" id="heightstart" value="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="heightend" class="form-label">Height End:</label>
+                    <input type="number" class="form-control" id="heightend" value="10" required>
+                </div>
+            </form>
+        </div>
+
+        <!-- Alert for input validation. Hidden by default -->
+        <div class="alert alert-danger" id="alert"></div>
+
+        <!-- 'Generate' button -->
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary" onclick="generateTable()">Generate</button>
+            </div>
+        </div>
+
+        <!-- The Multiplcation Table (populated by JavaScript) -->
+        <div id="tableContainer"></div>
+
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript" src="js/hw4.js"></script>
+</body>
+
+</html>
