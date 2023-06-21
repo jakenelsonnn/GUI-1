@@ -8,7 +8,7 @@ look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 21, 2023 at 5:55 PM
+Last modified by JN on June 21, 2023 at 6:30 PM
 */
 
 $(document).ready(function () {
@@ -63,6 +63,37 @@ $(document).ready(function () {
             }
         });
     });
+
+    // two way bind the sliders and the inputs
+    function updateWidthStartSlider() {
+        var sliderValue = $("#widthstart").val();
+        $("#widthstartslider").slider("value", sliderValue);
+        generateTable();
+    }
+
+    function updateWidthEndSlider() {
+        var sliderValue = $("#widthend").val();
+        $("#widthendslider").slider("value", sliderValue);
+        generateTable();
+    }
+
+    function updateHeightStartSlider() {
+        var sliderValue = $("#heightstart").val();
+        $("#heightstartslider").slider("value", sliderValue);
+        generateTable();
+    }
+
+    function updateHeightEndSlider() {
+        var sliderValue = $("#heightend").val();
+        $("#heightendslider").slider("value", sliderValue);
+        generateTable();
+    }
+
+    // numeric inputs update the sliders on change
+    $("#widthstart").on("input", updateWidthStartSlider);
+    $("#widthend").on("input", updateWidthEndSlider);
+    $("#heightstart").on("input", updateHeightStartSlider);
+    $("#heightend").on("input", updateHeightEndSlider);
 
     // Add validation rules to width form
     $("#width-form").validate({
@@ -205,6 +236,9 @@ $(document).ready(function () {
     $("#heightend").rules("add", {
         heightStartGreaterThanEnd: true
     });
+
+    //generate the initial table
+    generateTable();
 });
 
 // programatically generate the mult. table
