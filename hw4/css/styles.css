@@ -13,7 +13,7 @@ Last modified by JN on June 21, 2023 at 6:30 PM
 
 
 /* table container */
-#tableContainer {
+#tabs {
     margin-top: 50px;
     margin-bottom: 50px;
     overflow: auto;
@@ -66,7 +66,15 @@ td:first-child {
     left: 0;
 }
 
+/* slider controls */
 .slider {
     width: 300px;
     margin-bottom: 20px;
+}
+
+/* tabs */
+#tabs ul li .ui-icon-close {
+    float: left;
+    margin: 0.4em 0.2em 0 0;
+    cursor: pointer;
 }

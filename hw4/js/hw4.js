@@ -11,6 +11,9 @@ excerpted for educational purposes with credit to the author.
 Last modified by JN on June 21, 2023 at 6:30 PM
 */
 
+// initial number of tabs
+var tabCounter = 0;
+
 $(document).ready(function () {
 
     $(document).ready(function () {
@@ -23,7 +26,7 @@ $(document).ready(function () {
             slide: function (event, ui) {
                 $("#widthstartslider").val(ui.value);
                 $("#widthstart").val(ui.value);
-                generateTable();
+                generateTable(false);
             }
         });
 
@@ -35,7 +38,7 @@ $(document).ready(function () {
             slide: function (event, ui) {
                 $("#widthendslider").val(ui.value);
                 $("#widthend").val(ui.value);
-                generateTable();
+                generateTable(false);
             }
         });
 
@@ -47,7 +50,7 @@ $(document).ready(function () {
             slide: function (event, ui) {
                 $("#heightstartslider").val(ui.value);
                 $("#heightstart").val(ui.value);
-                generateTable();
+                generateTable(false);
             }
         });
 
@@ -59,7 +62,7 @@ $(document).ready(function () {
             slide: function (event, ui) {
                 $("#heightendslider").val(ui.value);
                 $("#heightend").val(ui.value);
-                generateTable();
+                generateTable(false);
             }
         });
     });
@@ -68,25 +71,25 @@ $(document).ready(function () {
     function updateWidthStartSlider() {
         var sliderValue = $("#widthstart").val();
         $("#widthstartslider").slider("value", sliderValue);
-        generateTable();
+        generateTable(false);
     }
 
     function updateWidthEndSlider() {
         var sliderValue = $("#widthend").val();
         $("#widthendslider").slider("value", sliderValue);
-        generateTable();
+        generateTable(false);
     }
 
     function updateHeightStartSlider() {
         var sliderValue = $("#heightstart").val();
         $("#heightstartslider").slider("value", sliderValue);
-        generateTable();
+        generateTable(false);
     }
 
     function updateHeightEndSlider() {
         var sliderValue = $("#heightend").val();
         $("#heightendslider").slider("value", sliderValue);
-        generateTable();
+        generateTable(false);
     }
 
     // numeric inputs update the sliders on change
@@ -120,7 +123,7 @@ $(document).ready(function () {
         submitHandler: function (form) {
             // Form submission logic
             if ($("#width-form").valid() && $("#height-form").valid()) {
-                generateTable();
+                generateTable(false);
             } else {
                 createAlert("Please fix the validation errors before generating the table.");
             }
@@ -192,7 +195,7 @@ $(document).ready(function () {
         submitHandler: function (form) {
             // Form submission logic
             if ($("#width-form").valid() && $("#height-form").valid()) {
-                generateTable();
+                generateTable(false);
             } else {
                 createAlert("Please fix the validation errors before generating the table.");
             }
@@ -237,12 +240,17 @@ $(document).ready(function () {
         heightStartGreaterThanEnd: true
     });
 
-    //generate the initial table
-    generateTable();
+    // initialize the tabs
+    $("#tabs").tabs();
+
+    // generate the initial table
+    generateTable(true);
+
+    // make the first tab active
+    $("#tabs").tabs("option", "active", 0);
 });
 
-// programatically generate the mult. table
-function generateTable() {
+function generateTable(tab) {
     var width_start = parseInt(document.getElementById("widthstart").value);
     var width_end = parseInt(document.getElementById("widthend").value);
 
@@ -254,49 +262,47 @@ function generateTable() {
         // hide any previous alert message
         hideAlert();
 
-        var tableContainer = document.getElementById("tableContainer");
-        // clear previously created table
-        tableContainer.innerHTML = "";
+        // to store the HTML table
+        var tableHtml = "";
 
-        // create the table and the table body
-        var table = document.createElement("table");
-        var tableBody = document.createElement("tbody");
+        // Create the table and the table body
+        tableHtml += "<table>";
+        tableHtml += "<tbody>";
 
-        // create the first (empty) cell
-        var firstRow = document.createElement("tr");
-        var cell = document.createElement("th");
-        cell.textContent = 0;
-        firstRow.appendChild(cell);
+        // Create the first (empty) cell
+        tableHtml += "<tr>";
+        tableHtml += "<th>0</th>";
 
-        // create the first row after the empty cell
+        // Create the first row after the empty cell
         for (var i = width_start; i <= width_end; i++) {
-            var cell = document.createElement("th");
-            cell.textContent = i;
-            firstRow.appendChild(cell);
+            tableHtml += "<th>" + i + "</th>";
         }
-        tableBody.appendChild(firstRow);
+        tableHtml += "</tr>";
 
-        // create the remaining rows
+        // Create the remaining rows
         for (var i = height_start; i <= height_end; i++) {
-            var row = document.createElement("tr");
+            tableHtml += "<tr>";
 
-            // first column cell
-            var firstCell = document.createElement("th");
-            firstCell.textContent = i;
-            row.appendChild(firstCell);
+            // First column cell
+            tableHtml += "<th>" + i + "</th>";
 
-            // remaining cells
+            // Remaining cells
             for (var j = width_start; j <= width_end; j++) {
-                var cell = document.createElement("td");
-                cell.textContent = i * j;
-                row.appendChild(cell);
+                tableHtml += "<td>" + (i * j) + "</td>";
             }
-            tableBody.appendChild(row);
+            tableHtml += "</tr>";
         }
 
-        // finally, assemble the table
-        table.appendChild(tableBody);
-        tableContainer.appendChild(table);
+        // Close the table body and table tags
+        tableHtml += "</tbody>";
+        tableHtml += "</table>";
+
+        // Pass the HTML content to the addTab function
+        if(tab) {
+            addTab(tableHtml);
+        } else {
+            editTab(tableHtml);
+        }
     } else {
         createAlert("Please fix the validation errors before generating the table.");
     }
@@ -314,4 +320,25 @@ function createAlert(message) {
 function hideAlert() {
     var alertBox = document.getElementById("alert");
     alertBox.style.display = "none";
+}
+
+// add a tab given the html content
+function addTab(content) {
+    var tabTitle = "Tab " + tabCounter;
+
+    // add the tab to the list of tabs
+    $("#tabs ul").append("<li><a href='#tab-" + tabCounter + "'>" + tabTitle + "</a><span class='ui-icon ui-icon-close' role='presentation'></span></li>");
+    
+    // add the tab content to the tab
+    $("#tabs").append("<div id='tab-" + tabCounter + "'>" + content + "</div>");
+
+    $("#tabs").tabs("refresh");
+    tabCounter++;
+}
+
+// edit the current tab
+function editTab(content) {
+    var currentIndex = $("#tabs").tabs("option", "active");
+    $("#tab-" + currentIndex).html(content);
+    $("#tabs").tabs("refresh");
 }

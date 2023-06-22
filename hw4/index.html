@@ -83,13 +83,16 @@ Last modified by JN on June 21, 2023 at 6:30 PM
 
         <!-- 'Generate' button -->
         <div class="row">
-            <div class="col-md-12">
-                <button class="btn btn-primary" onclick="generateTable()">Generate</button>
+            <div class="col-md-1">
+                <button class="btn btn-primary" id="tab-btn" onclick="generateTable(true)">Tab</button>
             </div>
         </div>
 
-        <!-- The Multiplcation Table (populated by JavaScript) -->
-        <div id="tableContainer"></div>
+        <!-- The Multiplcation Table Tabs -->
+        <div id="tabs">
+            <ul>
+            </ul>
+        </div>
 
     </div>
 
