@@ -5,18 +5,23 @@ File: index.html
 GUI Assignment: HW4: Using the jQuery Plugin/UI with Your Dynamic Table
 Description: This assignment involved extending the previous assignment by implementing jQuery.
 
-This page contains two forms which the user enters the range of the multiplication table.
-When the user presses "Generate" a multiplication table based on the given ranges is
-created and displayed on the page.
+jQuery is used for input validation, the framework for the tabs structure and the sliders.
 
 If the user enters invalid numbers into the forms, jQuery will handle and display an
-appropriate error message.
+appropriate error message, and the table will not be generated.
 
-This page was made with Bootstrap CSS.
+Editing the forms edits the table of the currently open tab. To create a new tab, press
+the 'Tab' button and a new tab will be created with a copy of your current table.
+
+Tabs can be deleted individually or in groups with the checkboxes.
+
+Expand the "About this Multiplication Table Generator..." section to read more.
+
+This page was styled with Bootstrap CSS.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 21, 2023 at 6:30 PM
+Last modified by JN on June 23, 2023 at 12:55 PM
 -->
 
 <!DOCTYPE html>
@@ -33,6 +38,7 @@ Last modified by JN on June 21, 2023 at 6:30 PM
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- Additional stylesheet for the table -->
     <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -43,10 +49,38 @@ Last modified by JN on June 21, 2023 at 6:30 PM
     <div class="container">
         <h1>Multiplication Table Generator</h1>
 
-        <p class="lead">Use the inputs below to define the multiplication table you wish to see. Make sure that the end
-            value is larger than the start value for both width and height. Furthermore, ensure that the range between
-            your end and start value is less than 100, or the table will not be generated. When you have entered your
-            inputs, press <b>Generate</b> to create the table.</p>
+        <!-- Expandable 'About' section -->
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="false" aria-controls="collapseOne">
+                            <small class="lead">About this Multiplication Table Generator...</small>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseOne" class="collapse hide" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Use the inputs below to create a multiplication table. You can use the numeric
+                            inputs (or the corresponding sliders below each) to define the range of the width and height
+                            of the table.</p>
+
+                        <p> <b>When you edit the dimensions of the table, you edit the table belonging to the
+                            currently open tab.</b> You can press the "Tab" button to save this particular table to a new
+                            tab. You can delete individual or multiple tabs. To delete a single tab, press the 'x'
+                            button in the corner of the tab and it will be removed. To delete multiple tabs, select the
+                            checkboxes in the corners of the tabs you wish to remove, and then press "Delete Selected
+                            Tabs" and the tabs will be deleted.</p>
+
+                        <p>This page was built using jQuery and Bootstrap CSS. jQuery handles all of the input
+                            validation and provides the framework for the tabs structure and the slider controls.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
 
         <!-- Width Range Entry -->
         <div class="row">
@@ -81,10 +115,13 @@ Last modified by JN on June 21, 2023 at 6:30 PM
         <!-- Alert for input validation. Hidden by default -->
         <div class="alert alert-danger" id="alert"></div>
 
-        <!-- 'Generate' button -->
+        <!-- 'Tab' button -->
         <div class="row">
             <div class="col-md-1">
-                <button class="btn btn-primary" id="tab-btn" onclick="generateTable(true)">Tab</button>
+                <button class="btn btn-primary" id="tab-btn" onclick="generateTable(true)">+ Tab</button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-primary" id="delete-tabs-btn">Delete Selected Tabs</button>
             </div>
         </div>
 

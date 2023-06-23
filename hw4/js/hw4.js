@@ -8,7 +8,7 @@ look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 21, 2023 at 6:30 PM
+Last modified by JN on June 23, 2023 at 12:55 PM
 */
 
 // initial number of tabs
@@ -16,56 +16,56 @@ var tabCounter = 0;
 
 $(document).ready(function () {
 
-    $(document).ready(function () {
-        // Initialize jQuery UI sliders
-        $("#widthstartslider").slider({
-            range: "min",
-            value: "1",
-            min: -100,
-            max: 100,
-            slide: function (event, ui) {
-                $("#widthstartslider").val(ui.value);
-                $("#widthstart").val(ui.value);
-                generateTable(false);
-            }
-        });
+    /////////////////////////////////// SLIDER CONFIGURATION ///////////////////////////////////
 
-        $("#widthendslider").slider({
-            range: "min",
-            value: "10",
-            min: -100,
-            max: 100,
-            slide: function (event, ui) {
-                $("#widthendslider").val(ui.value);
-                $("#widthend").val(ui.value);
-                generateTable(false);
-            }
-        });
-
-        $("#heightstartslider").slider({
-            range: "min",
-            value: "1",
-            min: -100,
-            max: 100,
-            slide: function (event, ui) {
-                $("#heightstartslider").val(ui.value);
-                $("#heightstart").val(ui.value);
-                generateTable(false);
-            }
-        });
-
-        $("#heightendslider").slider({
-            range: "min",
-            value: "10",
-            min: -100,
-            max: 100,
-            slide: function (event, ui) {
-                $("#heightendslider").val(ui.value);
-                $("#heightend").val(ui.value);
-                generateTable(false);
-            }
-        });
+    // Initialize jQuery UI sliders
+    $("#widthstartslider").slider({
+        range: "min",
+        value: "1",
+        min: -100,
+        max: 100,
+        slide: function (event, ui) {
+            $("#widthstartslider").val(ui.value);
+            $("#widthstart").val(ui.value);
+            generateTable(false);
+        }
     });
+
+    $("#widthendslider").slider({
+        range: "min",
+        value: "10",
+        min: -100,
+        max: 100,
+        slide: function (event, ui) {
+            $("#widthendslider").val(ui.value);
+            $("#widthend").val(ui.value);
+            generateTable(false);
+        }
+    });
+
+    $("#heightstartslider").slider({
+        range: "min",
+        value: "1",
+        min: -100,
+        max: 100,
+        slide: function (event, ui) {
+            $("#heightstartslider").val(ui.value);
+            $("#heightstart").val(ui.value);
+            generateTable(false);
+        }
+    });
+
+    $("#heightendslider").slider({
+        range: "min",
+        value: "10",
+        min: -100,
+        max: 100,
+        slide: function (event, ui) {
+            $("#heightendslider").val(ui.value);
+            $("#heightend").val(ui.value);
+            generateTable(false);
+        }
+    });;
 
     // two way bind the sliders and the inputs
     function updateWidthStartSlider() {
@@ -97,6 +97,8 @@ $(document).ready(function () {
     $("#widthend").on("input", updateWidthEndSlider);
     $("#heightstart").on("input", updateHeightStartSlider);
     $("#heightend").on("input", updateHeightEndSlider);
+
+    /////////////////////////////////// WIDTH VALIDATION ///////////////////////////////////
 
     // Add validation rules to width form
     $("#width-form").validate({
@@ -168,7 +170,7 @@ $(document).ready(function () {
         widthStartGreaterThanEnd: true
     });
 
-    /////////////////////////////////// height
+    /////////////////////////////////// HEIGHT VALIDATION ///////////////////////////////////
 
     // Add validation rules to height form
     $("#height-form").validate({
@@ -240,8 +242,47 @@ $(document).ready(function () {
         heightStartGreaterThanEnd: true
     });
 
+    /////////////////////////////////// TAB CONFIGURATION ///////////////////////////////////
+
     // initialize the tabs
     $("#tabs").tabs();
+
+    // Delete tab button event handler
+    $("#tabs").on("click", "span.ui-icon-close", function () {
+        var tabListItem = $(this).closest("li");
+        var panelId = tabListItem.remove().attr("aria-controls");
+        $("#" + panelId).remove();
+        $("#tabs").tabs("refresh");
+        updateTabIndexes();
+    });
+
+    // Delete multiple tabs button event handler
+    $("#delete-tabs-btn").click(function () {
+        var selectedTabs = $("#tabs input[type='checkbox']:checked").closest("li");
+        selectedTabs.each(function () {
+            var tabListItem = $(this);
+            var panelId = tabListItem.remove().attr("aria-controls");
+            $("#" + panelId).remove();
+        });
+        $("#tabs").tabs("refresh");
+        updateTabIndexes();
+    });
+
+    // Update tab indexes and IDs
+    function updateTabIndexes() {
+        $("#tabs ul li").each(function (index) {
+            var tabListItem = $(this);
+            var panelId = tabListItem.attr("aria-controls");
+            var tabId = "tab-" + index;
+            var tabTitle = "Tab " + index;
+
+            // Update tab ID and associated elements' IDs
+            tabListItem.attr("id", "tab-top-" + index);
+            tabListItem.find("a").attr("href", "#" + tabId).text(tabTitle);
+            tabListItem.find("span.ui-icon-close").attr("aria-controls", panelId);
+            $("#" + panelId).attr("id", tabId);
+        });
+    }
 
     // generate the initial table
     generateTable(true);
@@ -298,10 +339,10 @@ function generateTable(tab) {
         tableHtml += "</table>";
 
         // Pass the HTML content to the addTab function
-        if(tab) {
-            addTab(tableHtml);
+        if (tab) {
+            addTab(tableHtml, width_start, width_end, height_start, height_end);
         } else {
-            editTab(tableHtml);
+            editTab(tableHtml, width_start, width_end, height_start, height_end);
         }
     } else {
         createAlert("Please fix the validation errors before generating the table.");
@@ -323,22 +364,41 @@ function hideAlert() {
 }
 
 // add a tab given the html content
-function addTab(content) {
-    var tabTitle = "Tab " + tabCounter;
+function addTab(content, widthstart, widthend, heightstart, heightend) {
+    // Get the number of existing tabs
+    var tabCount = $("#tabs ul li").length;
+
+    // tab title is of the form: Tab [n] (w1, w2, h1, h2) where w and h define the range of width and height
+    var tabTitle = "Tab " + tabCount + "(" + widthstart + ", " + widthend + ", " + heightstart + ", " + heightend + ")";
 
     // add the tab to the list of tabs
-    $("#tabs ul").append("<li><a href='#tab-" + tabCounter + "'>" + tabTitle + "</a><span class='ui-icon ui-icon-close' role='presentation'></span></li>");
-    
+    $("#tabs ul").append(
+        "<li id='tab-top-" + tabCount + "'><input type='checkbox'><a href='#tab-" + tabCount + "'>" + tabTitle + "</a><span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>"
+    );
+
     // add the tab content to the tab
-    $("#tabs").append("<div id='tab-" + tabCounter + "'>" + content + "</div>");
+    $("#tabs").append("<div id='tab-" + tabCount + "'>" + content + "</div>");
 
     $("#tabs").tabs("refresh");
-    tabCounter++;
+    tabCounter = tabCount + 1;
 }
 
 // edit the current tab
-function editTab(content) {
+function editTab(content, widthstart, widthend, heightstart, heightend) {
+    // get the index of the active tab
     var currentIndex = $("#tabs").tabs("option", "active");
+
+    // tab title is of the form: Tab [n] (w1, w2, h1, h2) where w and h define the range of width and height
+    var tabTitle = "Tab " + currentIndex + "(" + widthstart + ", " + widthend + ", " + heightstart + ", " + heightend + ")";
+
+    // Update the tab content
     $("#tab-" + currentIndex).html(content);
+
+    // Update the tab title and remove button
+    var tabListItem = $("#tab-top-" + currentIndex);
+    tabListItem.find("a").text(tabTitle);
+    tabListItem.find("span.ui-icon-close").text("Remove Tab");
+
+    // Refresh the tabs
     $("#tabs").tabs("refresh");
 }
