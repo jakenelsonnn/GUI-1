@@ -268,7 +268,7 @@ $(document).ready(function () {
         updateTabIndexes();
     });
 
-    // Update tab indexes and IDs
+    // Update tab indexes and IDs - necessary for deletion of multiple tabs
     function updateTabIndexes() {
         $("#tabs ul li").each(function (index) {
             var tabListItem = $(this);
