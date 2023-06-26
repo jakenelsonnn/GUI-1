@@ -1,0 +1,45 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#holder {
+    position: relative;
+    background-image: url('../graphics_data/scrabble-tile-holder-406774_640.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    display: flex;
+    width: 640px;
+    height: 182px;
+}
+
+#board-container {
+    position: relative;
+    background-image: url('../graphics_data/Scrabble_Board_OneLine.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 1129px;
+    height: 80px;
+}
+
+#sub-areas-container {
+    display: flex;
+    height: 100%;
+}
+
+.sub-area {
+    flex: 1;
+    border: 1px dashed #000;
+    position: relative;
+}
+
+.tile {
+    width: 75px; 
+    height: 75px;
+}
