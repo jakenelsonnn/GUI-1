@@ -45,17 +45,21 @@ $(document).ready(function () {
     // init score
     score = 0;
 
-    // Function to generate a random number between min (inclusive) and max (exclusive)
+    // generate a random number between min (inclusive) and max (exclusive)
     function getRandomNumber(min, max) {
         return Math.floor(Math.random() * (max - min) + min);
     }
 
+    // replenish the hand of tiles
     function populateTileHolder() {
         var tileHolder = $('#holder');
         var tileFolder = 'graphics_data/Scrabble_Tiles/';
         var tileExtension = '.jpg';
 
+        // get the number of tiles in the tile holder
         var currentTileCount = tileHolder.find('.tile').length;
+
+        // get the number of tiles needed to be added to have full hand of 7
         var tilesToAdd = 7 - currentTileCount;
 
         if (tilesToAdd > 0) {
@@ -65,15 +69,21 @@ $(document).ready(function () {
                     break;
                 }
 
+                // pick a random tile from the available tiles
                 var randomIndex = getRandomNumber(0, tilePieces.length);
                 var tile = tilePieces[randomIndex];
+
+                // set up the tile image (and alt text)
                 var tileImageSrc = tileFolder + 'Scrabble_Tile_' + tile.letter + tileExtension;
                 var tileImageAlt = 'Scrabble Tile ' + tile.letter;
 
+                // add the tile/image to the tile holder
                 tileHolder.append('<img src="' + tileImageSrc + '" alt="' + tileImageAlt + '" class="tile" data-value="' + tile.value + '">');
 
+                // decrease the amount of this tile that is available
                 tilePieces[randomIndex].amount--;
 
+                // if there are 0 of the tile left, remove it from the list
                 if (tilePieces[randomIndex].amount === 0) {
                     tilePieces.splice(randomIndex, 1);
                 }
@@ -83,6 +93,7 @@ $(document).ready(function () {
         // update the tiles table
         updateTileNumbers();
 
+        // make tiles draggable
         tileHolder.find('.tile').draggable({
             containment: 'body',
             revert: function (droppable) {
@@ -94,15 +105,54 @@ $(document).ready(function () {
         });
     }
 
+    // validate the tiles placed on the board
+    function checkBoard() {
+        var subAreas = $('.sub-area');
+        var tiles = subAreas.children('.tile');
+        var tileCount = tiles.length;
+
+        var validPlacement = true;
+        var prevSubAreaIndex = -1;
+        var currentSubAreaIndex = -1;
+
+        // Check if tiles are placed consecutively in sub-areas
+        tiles.each(function () {
+            var subAreaIndex = $(this).parent().index();
+
+            if (prevSubAreaIndex === -1) {
+                // First tile, set the current sub-area index
+                currentSubAreaIndex = subAreaIndex;
+            } else if (subAreaIndex !== prevSubAreaIndex + 1) {
+                // Tiles are not placed consecutively
+                validPlacement = false;
+                return false;
+            }
+
+            prevSubAreaIndex = subAreaIndex;
+        });
+
+        if (tileCount === 0 || !validPlacement) {
+            alert('Invalid tile placement.');
+            return;
+        }
+
+        // total value of the tiles on the board
+        var totalValue = 0;
+
+        tiles.each(function () {
+            var tileValue = parseInt($(this).data('value'));
+            totalValue += tileValue;
+        });
+
+        incrementScore(totalValue);
+        alert('Consecutive tiles placed. Score: ' + score);
+        subAreas.empty();
+        populateTileHolder();
+    }
+
     // update the score on screen
     function incrementScore(value) {
         score += value;
-        $('#score-value').text(score);
-    }
-
-    // set the score
-    function setScore(value) {
-        score = value;
         $('#score-value').text(score);
     }
 
@@ -123,24 +173,16 @@ $(document).ready(function () {
 
             if (tile) {
                 $(this).text(tile.amount);
-            } else {
-                $(this).text("0"); // Display 0 instead of an empty string
+            } else { // No tile of this type remaining, write 0 to table
+                $(this).text("0");
             }
         });
     }
 
-    function resetTiles() {
-        // copy the tiles from the original data structure
-        tilePieces = JSON.parse(JSON.stringify(tilesData.pieces));
-        // reset the table on the page
-        updateTileNumbers();
-    }
-
-
+    // make the sections on the board droppable areas
     $('.sub-area').droppable({
         accept: '.tile',
         drop: function (event, ui) {
-            var droppedTile = ui.draggable;
             var draggable = ui.draggable;
             var droppable = $(this);
 
@@ -164,46 +206,7 @@ $(document).ready(function () {
 
     // Check button event: Validate the entry
     $('#check-btn').click(function () {
-        var subAreas = $('.sub-area');
-        var tiles = subAreas.children('.tile');
-        var tileCount = tiles.length;
-
-        var validPlacement = true;
-        var prevSubAreaIndex = -1;
-        var currentSubAreaIndex = -1;
-
-        // Check if tiles are placed consecutively in sub-areas
-        tiles.each(function () {
-            var subAreaIndex = $(this).parent().index();
-
-            if (prevSubAreaIndex === -1) {
-                // First tile, set the current sub-area index
-                currentSubAreaIndex = subAreaIndex;
-            } else if (subAreaIndex !== prevSubAreaIndex + 1) {
-                // Tiles are not placed consecutively
-                validPlacement = false;
-                return false; // Exit the loop
-            }
-
-            prevSubAreaIndex = subAreaIndex;
-        });
-
-        if (tileCount === 0 || !validPlacement) {
-            alert('Invalid tile placement.');
-            return;
-        }
-
-        var totalValue = 0;
-
-        tiles.each(function () {
-            var tileValue = parseInt($(this).data('value'));
-            totalValue += tileValue;
-        });
-
-        incrementScore(totalValue);
-        alert('Consecutive tiles placed. Score: ' + score);
-        subAreas.empty();
-        populateTileHolder();
+        checkBoard();
     });
 
     // Reset button event: Reset the game
