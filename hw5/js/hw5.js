@@ -1,3 +1,16 @@
+/*
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+
+File: hw5.js
+GUI Assignment: HW5: Implementing a Bit of Scrabble with Drag-and-Drop 
+Description: This is the .js file for the Scrabble Game. For more information about HW5, please
+look at index.html.
+
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on June 30, 2023 at 2:00 PM
+*/
+
 // keep score among games
 var score = 0;
 

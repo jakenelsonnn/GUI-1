@@ -1,3 +1,16 @@
+/*
+Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+
+File: hw5.js
+GUI Assignment: HW5: Implementing a Bit of Scrabble with Drag-and-Drop 
+Description: This is the .js file for the Scrabble Game. For more information about HW5, please
+look at index.html.
+
+Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
+excerpted for educational purposes with credit to the author.
+Last modified by JN on June 30, 2023 at 2:00 PM
+*/
+
 body {
     display: flex;
     flex-direction: column;
@@ -16,6 +29,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Score widget */
 #score-container {
     display: flex;
     flex-direction: column;
@@ -46,6 +60,7 @@ body {
     color: #ffffff;
 }
 
+/* for the table of available tiles */
 #table-container {
     margin: auto;
 }
@@ -98,6 +113,7 @@ body {
 }
 
 
+/* Tile Holder */
 #holder {
     position: relative;
     background-image: url('../graphics_data/scrabble-tile-holder-406774_640.png');
@@ -112,6 +128,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Game Board */
 #board-container {
     position: relative;
     background-image: url('../graphics_data/Scrabble_Board_OneLine.png');
@@ -124,6 +141,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* Sub-areas of board where tiles are places */
 #sub-areas-container {
     display: flex;
     width: 1129px;
@@ -162,7 +180,7 @@ body {
     background-color: #d80000;
 }
 
-/* validation text: fade in and fade out */
+/* message text: fade in and fade out */
 @keyframes fade-in {
     0% {
         opacity: 0;
