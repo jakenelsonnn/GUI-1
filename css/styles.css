@@ -1,277 +1,215 @@
 /*
-File: styles.css
-Created: Wednesday, May 17th 2023
 Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
-GUI Assignment: Creating Your First Web Page
-Instructor: Wenjin Zhou
-Description: This file provides the style and layout information for index.html. This
-file is responsible for all of the colors, layout, size, arrangement, and look/feel of
-the webpage.
+
+File: hw5.css
+GUI Assignment: HW5: Implementing a Bit of Scrabble with Drag-and-Drop 
+Description: This is the .css file for the Scrabble Game. For more information about HW5, please
+look at index.html.
+
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Information Sources: W3Schools, Traversy Media (YouTube), HTML&CSS by Jon Duckett
-Last modified by JN on May 23, 2023 at 12:49 PM
+Last modified by JN on June 30, 2023 at 2:00 PM
 */
 
-/* all elements in the page go inside of this 'container'. The container's width
-is set to 80%, meaning the container's width is 80% of the window's width. I think
-this provides a nice surface to layout all elements, as well as allows me to have a 
-background image for the body. */
-.container {
-    width: 80%;
-    margin: auto;
-    background-color: #b6d3ff;
-    border: 3px #3335ab solid;
-}
-
 body {
-    background-color: #8ea8ff;
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    font-family: Arial, Helvetica, sans-serif;
-    line-height: 1.6em;
-}
-
-figcaption {
-    text-align: center;
-    font-size: smaller;
-}
-
-/* The main header at the top of the page with my name on it. The font size is set to 0,
-which allowed me to remove an undesired gap below the header. */
-#main-header {
-    background-color: #fcba03;
-    text-align: center;
-    font-size: 0px;
-}
-
-#main-header h1,
-h2 {
-    display: inline-block;
-    font-size: medium;
-}
-
-/* Contains links that bring user to different sections of the page. */
-.navbar {
-    text-align: center;
-    background-color: #08a0f1;
-}
-
-/* Navbar is styled to all links within it are horizontal and centered. */
-.navbar ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #6e0303;
+    font-family: Arial, sans-serif;
 }
 
-.navbar li {
-    margin: 0 10px;
+#dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    margin-bottom: 20px;
 }
 
-.navbar a {
-    text-decoration: none;
+/* Score widget */
+#score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    height: fit-content;
+    border: 1px solid white;
+    border-radius: 5px;
+    margin: auto;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+#score {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+#score span {
+    display: block;
+    text-align: center;
+    font-size: px;
+    font-weight: bold;
     color: #ffffff;
 }
 
-/* This is the container for the icons for links at the bottom of the page.
-Icons are centered and evenly spaced apart. */
-.icon-container {
-    display: flex;
-    justify-content: center;
-    background-color: #08a0f1;
-    padding-top: 5px;
-    padding-bottom: 5px;
-}
-
-.icon-container img {
-    margin: 0 10px;
-}
-
-.text-container {
-    width: 80%;
+/* for the table of available tiles */
+#table-container {
     margin: auto;
-    padding: 20px;
-    text-align: left;
 }
 
-/* Used to divide sections of the page. Each page divider is a horizontal line
-stretching the width of the container, with text in the center of it. I think this
-is a neat, clean-looking way to organize my page.*/
-.page-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.divider-line {
-    flex-grow: 1;
-    border: none;
-    border-top: 1px solid #000;
-}
-
-.divider-text {
-    margin: 0 10px;
-    font-weight: bold;
-    font-size: larger;
-    color: #000;
-}
-
-/* For the graphics section of the page, which consists of the canvas and a panel of controls.
-The panel and the canvas are positioned next to each other neatly. */
-#graphics-controls {
-    justify-content: center;
-    display: flex;
-    flex: 2;
-    margin: auto;
-    background-color: #68acff;
-    width: 80%;
-    padding: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    position: relative;
-}
-
-/* This styles the panel of controls for the canvas. The controls are given a border and neatly
-grouped together for page organization. */
-#controls {
-    border: 1px solid black;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    margin: auto;
-    padding: 10px;
-    position: relative;
-}
-
-/* The canvas sits next to the controls panel and the size adjusts to the size of the page. */
-canvas {
-    border: 1px solid black;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    margin: auto;
-    width: 30%;
-    height: auto;
-    margin-left: 20px;
-}
-
-/* This styles the controls for when the 'Line Perspective' option is chosen. By default, they
-are set to be hidden (display:none) but the javascript file associated with this page changes the
-display style to visible when the user selects the corresponding option in the perspective select. */
-#line-perspective {
-    display: none;
-}
-
-/* This styles a container for an image and a body of text inline with each other. The text goes 
-on the left, and the image goes on the right. */
-.left-text-img-box {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.left-text-img-box img {
-    max-width: 400px;
-    max-height: 600px;
-    margin-left: 20px;
-}
-
-/* This styles a container for an image and a body of text inline with each other. The text goes 
-on the right, and the image goes on the left. */
-.right-text-img-box {
-    display: flex;
-    align-items: center;
-    flex: 1;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.right-text-img-box img {
-    max-width: 400px;
-    max-height: 600px;
-    margin-right: 20px;
-}
-
-/* This styles the label for the graphics controls panel. It is similar to the page divider in that
-the label intersects a line (in this case, the border of the controls panel). */
-.label {
-    position: absolute;
-    top: -40px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #68acff;
-    padding: 0 10px;
-}
-
-/* This styles the "features" showcase of the GuessWord secttion. Each feature will be a container with a
-screenshot and a caption below it, in a nice little box with a light shadow. */
-.features {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .feature {
-    flex-basis: calc(20% - 20px);
-    margin: 20px;
-    padding: 20px;
-    background-color: #68acff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .feature img {
-    max-width: 100%;
-    border-radius: 4px;
-  }
-  
-  .feature h3 {
-    margin-top: 10px;
-    text-align: center;
-    font-size: 1vw;
-  }
-  
-  .feature p {
-    flex-grow: 1;
-    font-size: 0.8vw;
-  }
-
-  .link-table {
+#tile-table {
     width: 100%;
     border-collapse: collapse;
-  }
-  
-  .link-table th,
-  .link-table td {
-    padding: 12px;
+    font-family: Arial, sans-serif;
+}
+
+#tile-table th {
+    background-color: #c1e4fc;
+    border: 1px solid #dddddd;
+    padding: 8px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .link-table th {
-    background-color: #68acff;
-  }
-  
-  .link-table tbody tr:hover {
-    background-color: #68acff;
-  }
-  
-  .link-table a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .link-table a:hover {
-    text-decoration: underline;
-  }
-  
-  
+}
+
+#tile-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tile-table tr {
+    background-color: #eeb5b5;
+}
+
+#tile-table th:first-child,
+#tile-table td:first-child {
+    font-weight: bold;
+}
+
+#tile-table th:nth-child(2),
+#tile-table td:nth-child(2),
+#tile-table td:nth-child(3) {
+    text-align: center;
+}
+
+#tile-table td:first-child {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#tile-table th:first-child {
+    width: 30%;
+}
+
+#tile-table td:nth-child(2),
+#tile-table td:nth-child(3) {
+    width: 35%;
+}
+
+
+/* Tile Holder */
+#holder {
+    position: relative;
+    background-image: url('../graphics_data/scrabble-tile-holder-406774_640.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    padding: 50px;
+    display: flex;
+    justify-content: space-around;
+    width: 640px;
+    height: 182px;
+    margin-bottom: 20px;
+}
+
+/* Game Board */
+#board-container {
+    position: relative;
+    background-image: url('../graphics_data/Scrabble_Board_OneLine.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 1129px;
+    height: 80px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Sub-areas of board where tiles are places */
+#sub-areas-container {
+    display: flex;
+    width: 1129px;
+    height: 80px;
+    margin-bottom: 20px;
+}
+
+.sub-area {
+    flex: 1;
+    position: relative;
+}
+
+.tile {
+    width: 75px;
+    height: 75px;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#buttons button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #c70000;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#buttons button:hover {
+    background-color: #d80000;
+}
+
+/* message text: fade in and fade out */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#fade-text {
+    opacity: 0;
+    color: white;
+}
+
+.fade-in {
+    animation: fade-in 1s forwards;
+}
+
+.fade-out {
+    animation: fade-out 1s forwards;
+}
