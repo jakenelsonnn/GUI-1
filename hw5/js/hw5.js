@@ -65,7 +65,7 @@ $(document).ready(function () {
         if (tilesToAdd > 0) {
             for (var i = 0; i < tilesToAdd; i++) {
                 if (tilePieces.length === 0) {
-                    alert('No more tiles available.');
+                    showMessage('No more tiles available.');
                     break;
                 }
 
@@ -106,6 +106,7 @@ $(document).ready(function () {
     }
 
     // validate the tiles placed on the board
+    // validate the tiles placed on the board
     function checkBoard() {
         var subAreas = $('.sub-area');
         var tiles = subAreas.children('.tile');
@@ -132,23 +133,41 @@ $(document).ready(function () {
         });
 
         if (tileCount === 0 || !validPlacement) {
-            alert('Invalid tile placement.');
+            showMessage("Invalid tile placement. Please try again.");
             return;
         }
 
         // total value of the tiles on the board
         var totalValue = 0;
 
+        // check for double letter score
         tiles.each(function () {
             var tileValue = parseInt($(this).data('value'));
+
+            // Check for special sub-area placements and modify the tile value accordingly
+            var subAreaIndex = $(this).parent().index();
+            if (subAreaIndex === 6 || subAreaIndex === 8) {
+                tileValue *= 2; // Double the value of the tile
+            }
+
             totalValue += tileValue;
         });
 
+        // check for double word score
+        tiles.each(function () {
+            // Check for special sub-area placements and modify the tile value accordingly
+            var subAreaIndex = $(this).parent().index();
+            if (subAreaIndex === 2 || subAreaIndex === 12) {
+                totalValue *= 2; // Double the value of the tile
+            }
+        });
+
         incrementScore(totalValue);
-        alert('Consecutive tiles placed. Score: ' + score);
+        showMessage('Well done. Points earned: ' + totalValue);
         subAreas.empty();
         populateTileHolder();
     }
+
 
     // update the score on screen
     function incrementScore(value) {
@@ -177,6 +196,20 @@ $(document).ready(function () {
                 $(this).text("0");
             }
         });
+    }
+
+    // fade in text area: for validation and showing points earned
+    function showMessage(text) {
+        var textElement = document.getElementById('fade-text');
+        textElement.classList.add('fade-in');
+        textElement.textContent = text;
+        setTimeout(function () {
+            textElement.classList.add('fade-out');
+            textElement.classList.remove('fade-in');
+            setTimeout(function () {
+                textElement.classList.remove('fade-out');
+            }, 1000);
+        }, 2000); // Fade in to fade out takes 2 seconds
     }
 
     // make the sections on the board droppable areas

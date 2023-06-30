@@ -161,3 +161,37 @@ body {
 #buttons button:hover {
     background-color: #d80000;
 }
+
+/* validation text: fade in and fade out */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#fade-text {
+    opacity: 0;
+    color: white;
+}
+
+.fade-in {
+    animation: fade-in 1s forwards;
+}
+
+.fade-out {
+    animation: fade-out 1s forwards;
+}
