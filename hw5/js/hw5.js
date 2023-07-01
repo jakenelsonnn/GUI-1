@@ -8,7 +8,7 @@ look at index.html.
 
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on June 30, 2023 at 2:00 PM
+Last modified by JN on July 1st, 2023 at 10:50 AM
 */
 
 // keep score among games
@@ -17,7 +17,7 @@ var score = 0;
 // keep track of current tiles
 var tilePieces;
 
-// Tiles: Points and Amounts
+// Tiles: Points and Amounts (data structure by Ramon Meza)
 var tilesData = {
     "pieces": [
         { "letter": "A", "value": 1, "amount": 9 },
