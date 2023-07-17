@@ -1,10 +1,16 @@
 /*
 File: styles.css
-GUI Assignment: Creating Your First Web Page
+Created: Wednesday, May 17th 2023
 Jacob A. Nelson, UMass Lowell Computer Science, jacob_nelson@student.uml.edu
+GUI Assignment: Creating Your First Web Page
+Instructor: Wenjin Zhou
+Description: This file provides the style and layout information for index.html. This
+file is responsible for all of the colors, layout, size, arrangement, and look/feel of
+the webpage.
 Copyright (c) 2023 by Jacob A. Nelson. All rights reserved. May be freely copied or
 excerpted for educational purposes with credit to the author.
-Last modified by JN on May 22, 2023 at 1:05 PM
+Information Sources: W3Schools, Traversy Media (YouTube), HTML&CSS by Jon Duckett
+Last modified by JN on May 23, 2023 at 12:49 PM
 */
 
 /* all elements in the page go inside of this 'container'. The container's width
@@ -14,12 +20,12 @@ background image for the body. */
 .container {
     width: 80%;
     margin: auto;
-    background-color: #fff;
+    background-color: #b6d3ff;
     border: 3px #3335ab solid;
 }
 
 body {
-    background-color: #7a97f5;
+    background-color: #8ea8ff;
     background-image: url('../images/background.jpg');
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
@@ -48,7 +54,7 @@ h2 {
 /* Contains links that bring user to different sections of the page. */
 .navbar {
     text-align: center;
-    background-color: #b3e2fc;
+    background-color: #08a0f1;
 }
 
 /* Navbar is styled to all links within it are horizontal and centered. */
@@ -66,7 +72,7 @@ h2 {
 
 .navbar a {
     text-decoration: none;
-    color: #000;
+    color: #ffffff;
 }
 
 /* This is the container for the icons for links at the bottom of the page.
@@ -74,7 +80,7 @@ Icons are centered and evenly spaced apart. */
 .icon-container {
     display: flex;
     justify-content: center;
-    background-color: #b3e2fc;
+    background-color: #08a0f1;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -120,9 +126,13 @@ The panel and the canvas are positioned next to each other neatly. */
     display: flex;
     flex: 2;
     margin: auto;
+    background-color: #68acff;
     width: 80%;
     padding: 20px;
     border: 2px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     position: relative;
 }
 
@@ -130,6 +140,9 @@ The panel and the canvas are positioned next to each other neatly. */
 grouped together for page organization. */
 #controls {
     border: 1px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     margin: auto;
     padding: 10px;
     position: relative;
@@ -138,6 +151,9 @@ grouped together for page organization. */
 /* The canvas sits next to the controls panel and the size adjusts to the size of the page. */
 canvas {
     border: 1px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
     margin: auto;
     width: 30%;
     height: auto;
@@ -164,7 +180,6 @@ on the left, and the image goes on the right. */
 .left-text-img-box img {
     max-width: 400px;
     max-height: 600px;
-    min-width: none;
     margin-left: 20px;
 }
 
@@ -181,7 +196,6 @@ on the right, and the image goes on the left. */
 .right-text-img-box img {
     max-width: 400px;
     max-height: 600px;
-    min-width: none;
     margin-right: 20px;
 }
 
@@ -192,6 +206,70 @@ the label intersects a line (in this case, the border of the controls panel). */
     top: -40px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background-color: #68acff;
     padding: 0 10px;
+}
+
+/* This styles the "features" showcase of the GuessWord secttion. Each feature will be a container with a
+screenshot and a caption below it, in a nice little box with a light shadow. */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.feature {
+    flex-basis: calc(20% - 20px);
+    margin: 20px;
+    padding: 20px;
+    background-color: #68acff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.feature img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+
+.feature h3 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 1vw;
+}
+
+.feature p {
+    flex-grow: 1;
+    font-size: 0.8vw;
+}
+
+.link-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.link-table th,
+.link-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.link-table th {
+    background-color: #68acff;
+}
+
+.link-table tbody tr:hover {
+    background-color: #68acff;
+}
+
+.link-table a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link-table a:hover {
+    text-decoration: underline;
 }
